@@ -3,38 +3,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
-<title>Login</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<title>Login Page</title>
 </head>
 <body>
 	<%@ include file="../menu.jsp"%>
-	<div class="jumbotron">
-		<div class="container">
-			<h1 class="display-3">로그인</h1>
-		</div>
-	</div>
-	<div class="container" align="center">
-		<div class="col-md-4 col-md-offset-4">
-			<h3 class="form-signin-heading">Please sign in</h3>
-			<%
-				String error = request.getParameter("error");
-				if (error != null) {
-					out.println("<div class='alert alert-danger'>");
-					out.println("아이디와 비밀번호를 확인해 주세요");
-					out.println("</div>");
-				}
-			%>
-			<form class="form-signin" action="j_security_check" method="post">
+	
+	<%
+		String error = request.getParameter("error");
+		if (error != null) {
+			out.println("<div class='alert alert-danger'>");
+			out.println("아이디와 비밀번호를 확인해 주세요");
+			out.println("</div>");
+		}
+	%>
+	<div class="container mt-5" align="center">
+		<div class="card border-primary mb-3" style="max-width: 20rem;">
+		  <div class="card-header"><p></p><h2>로그인</h2></div>
+		  <div class="card-body">
+		    <form class="form-signin" action="j_security_check" method="post">
 				<div class="form-group">
-					<label for="inputUserName" class="sr-only">User Name</label> 
-					<input	type="text" class="form-control" placeholder="ID"	name='j_username' required autofocus>
+					<label for="inputUserName" class="sr-only">아이디</label> 
+					<input	type="text" class="form-control" placeholder="ID" name='j_username' required autofocus>
 				</div>
-				<div class="form-group">
-					<label for="inputPassword" class="sr-only">Password</label> 
+				<div class="form-group mt-2">
+					<label for="inputPassword" class="sr-only">패스워드</label> 
 					<input 	type="password" class="form-control" placeholder="Password" name='j_password' required>
 				</div>
-				<button class="btn btn btn-lg btn-success btn-block" type="submit" value="로그인">로그인</button>
+				<div class="container mt-3" align="right">
+					<button class="btn btn-warning" type="button" value="회원가입" onClick="location.href='../welcome.jsp'">회원가입</button>
+					<button class="btn btn-success" type="submit" value="로그인">로그인</button>
+					<button class="btn btn-primary" type="button" value="취소" onClick="location.href='../welcome.jsp'">취소</button>
+			  	</div>
 			</form>
+		  </div>
 		</div>
 	</div>
 </body>
