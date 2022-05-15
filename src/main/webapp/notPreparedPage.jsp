@@ -11,7 +11,7 @@
 
 <meta charset="UTF-8">
 
-<title>Account Page</title>
+<title>Not Prepared Page</title>
 </head>
 <body>
 	<%@ include file="menu.jsp"%>
